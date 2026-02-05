@@ -1,15 +1,19 @@
-import React from 'react'
-const RadioButton = ({label,type ,name}) =>{
-    return (
-        <>
-        <label for="username">{label}</label>
-        <input type={type} name={name}
-        className='mr-6'
-        
-        />
-        
-        </>
-    )
-}
+import React from "react";
 
-export default RadioButton
+const RadioButton = ({ label, name, value, checked, onChange }) => {
+  return (
+    <label className="inline-flex items-center mr-6 cursor-pointer">
+      <input
+        type="radio"
+        name={name}
+        value={value}
+        checked={checked}
+        onChange={onChange}
+        className="mr-2"
+      />
+      {label}
+    </label>
+  );
+};
+
+export default RadioButton;
