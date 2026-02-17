@@ -1,70 +1,159 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import InputText from "./InputText";
 import RadioButton from "./RadioButton";
 import DropDown from "./DropDown";
 
-const states = ["Delhi", "Maharashtra", "Gujarat"];
-const districts = ["District 1", "District 2", "District 3"];
-
-const Login = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const Form = () => {
+  const [Name, setName] = useState("");
+  const [Email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
   const [success, setSuccess] = useState(false);
+  const [gender, setGender] = useState("");
 
-  const handleSubmit = () => {
-    if (username && password) {
+  const [selectedState, setSelectedState] = useState("");
+  const [selectedDistrict, setSelectedDistrict] = useState("");
+
+  const state = ["Maharashtra", "Uttar Pradesh", "MP"];
+
+  const district = [
+    "Mumbai",
+    "Pune",
+    "Lucknow",
+    "Noida",
+    "Bhopal",
+    "Gwalior",
+  ];
+
+  const [error, setError] = useState("");
+
+  const handleValidation = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (Name.length < 3) {
+      setError("Name must be at least 3 characters");
+      return false;
+    }
+
+    if (!/^\d{10}$/.test(mobile)) {
+      setError("Mobile number must be exactly 10 digits");
+      return false;
+    }
+
+    if (!emailRegex.test(Email)) {
+      setError("Enter a valid email address");
+      return false;
+    }
+
+    if (!selectedState) {
+      setError("State is required");
+      return false;
+    }
+
+    if (!selectedDistrict) {
+      setError("District is required");
+      return false;
+    }
+
+    setError("");
+    return true;
+  };
+
+  const handleLogin = () => {
+    if (handleValidation()) {
       setSuccess(true);
 
       setTimeout(() => {
         setSuccess(false);
-        setUsername("");
-        setPassword("");
+        setName("");
+        setEmail("");
+        setMobile("");
+        setGender("");
+        setSelectedState("");
+        setSelectedDistrict("");
       }, 3000);
-    } else {
-      setSuccess(false);
-      alert("Please fill all fields");
     }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form className="bg-white p-6 rounded-lg shadow-md w-80">
-        <h2 className="text-2xl font-semibold text-center mb-4">Login</h2>
+      <form className="bg-white p-5 rounded-lg hover:shadow-md w-80">
+        <h2 className="text-center text-xl font-bold mb-4 underline">
+          Registration Form
+        </h2>
 
         <InputText
-          label="Username"
-          type="text"
-          placeholder="Enter username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          label="Name"
+          placeholder="Enter Name"
+          value={Name}
+          onChange={(e) => setName(e.target.value)}
         />
 
         <InputText
-          label="Password"
-          type="password"
-          placeholder="Enter password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          label="Mobile Number"
+          placeholder="Enter Phone Number"
+          value={mobile}
+          onChange={(e) => setMobile(e.target.value)}
         />
 
-        <p className="font-semibold mt-3">Gender</p>
-        <RadioButton label="Female" name="gender" />
-        <RadioButton label="Male" name="gender" />
+        <InputText
+          label="Email ID"
+          placeholder="Enter Email ID"
+          value={Email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
 
-        <DropDown label="State" options={states} />
-        <DropDown label="District" options={districts} />
+        <p className="font-semibold">Gender:</p>
+
+        <RadioButton
+          label="Female"
+          name="gender"
+          type="radio"
+          value="Female"
+          checked={gender === "Female"}
+          onChange={(e) => setGender(e.target.value)}
+        />
+
+        <RadioButton
+          label="Male"
+          name="gender"
+          type="radio"
+          value="Male"
+          checked={gender === "Male"}
+          onChange={(e) => setGender(e.target.value)}
+        />
+
+        <DropDown
+          label="State"
+          data={state}
+          value={selectedState}
+          onChange={(e) => setSelectedState(e.target.value)}
+        />
+
+        <DropDown
+          label="District"
+          data={district}
+          value={selectedDistrict}
+          onChange={(e) => setSelectedDistrict(e.target.value)}
+          disabled={!selectedState}
+        />
+
+        {error && (
+          <p className="text-red-500 text-sm text-center mb-2 font-semibold">
+            {error}
+          </p>
+        )}
 
         <button
           type="button"
-          onClick={handleSubmit}
-          className="w-full bg-blue-500 text-white py-2 rounded mt-4 hover:bg-blue-600 transition"
+          onClick={handleLogin}
+          className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 font-bold"
         >
-          Login
+          Submit
         </button>
 
         {success && (
           <p className="text-green-500 text-center mt-4 font-semibold">
-            Login Successful ✅
+            Submitted Successfully ✅
           </p>
         )}
       </form>
@@ -72,4 +161,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Form;
