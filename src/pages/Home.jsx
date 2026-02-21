@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./ModalHome";
 import HeroSection from "../Components/HeroSection";
+import AlumniSection from "../Components/AlumniSection";
 
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
         className="h-full w-full object-cover"
       />
       <HeroSection/>
+      <AlumniSection/>
 
       <div className="absolute inset-0 flex items-center text-center justify-center">
         <h1 className="text-white text-4xl text-center font-bold h-96">

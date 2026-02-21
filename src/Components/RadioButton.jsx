@@ -1,6 +1,5 @@
 import React from "react";
 
-<<<<<<< HEAD
 const RadioButton = ({ label, name, value, checked, onChange }) => {
   return (
     <label className="inline-flex items-center mr-6 cursor-pointer">
@@ -14,14 +13,6 @@ const RadioButton = ({ label, name, value, checked, onChange }) => {
       />
       {label}
     </label>
-=======
-const RadioButton = ({ label, type, name }) => {
-  return (
-    <>
-      <label> {label}</label>
-      <input type={type} name={name} className=" mr-6" />
-    </>
->>>>>>> 2293f84 (Updated HeroSection and auto slider)
   );
 };
 
