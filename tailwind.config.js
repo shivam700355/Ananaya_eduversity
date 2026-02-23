@@ -7,12 +7,17 @@ export default {
   theme: {
     extend: {
       animation: {
-        marquee: "marquee 25s linear infinite",
+        marqueeLeft: "marqueeLeft 12s linear infinite",
+        marqueeRight: "marqueeRight 12s linear infinite",
       },
       keyframes: {
-        marquee: {
+        marqueeLeft: {
           "0%": { transform: "translateX(0%)" },
           "100%": { transform: "translateX(-50%)" },
+        },
+        marqueeRight: {
+          "0%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(0%)" },
         },
       },
     },
