@@ -8,6 +8,7 @@ import ModalHome from "./pages/ModalHome";
 import AboutUs from "./pages/AboutUs";
 import ContactPage from "./pages/ContactPage";
 import Services from "./pages/Services";
+import Banner from "./Components/Banner";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <GridPractice /> */}
       <Navbar />
       <div className="pt-16">
+        <Banner/>
 
 
       <Routes>

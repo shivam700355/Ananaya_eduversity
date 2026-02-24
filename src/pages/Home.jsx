@@ -21,6 +21,7 @@ const Home = () => {
         alt="no background"
         className="h-full w-full object-cover"
       />
+      
       <HeroSection/>
       <AlumniSection/>
 

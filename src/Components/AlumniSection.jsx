@@ -32,7 +32,7 @@ function AlumniSection() {
 
         {/* Infinite Scroll Wrapper */}
         <div className="relative overflow-hidden">
-          <div className="flex animate-marqueeLeft gap-8 w-max">
+          <div className="flex animate-scroll gap-8 w-max">
 
             {/* Duplicate data for infinite effect */}
             {[...alumniData, ...alumniData].map((alumni, index) => (
