@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Banner_4 from "../assets/companies/Banner_4.jpg";
-import Banner_2 from "../assets/companies/Banner_2.jpg"; // add second image
+import Banner_5 from "../assets/companies/Banner_5.jpg"; // add second image
 
 export default function Banner() {
-  const banners = [Banner_4, Banner_2];
+  const banners = [Banner_4, Banner_5];
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function Banner() {
               </h2>
             </div>
           </div>
-        ))}
+        ))}   
       </div>
     </div>
   );
