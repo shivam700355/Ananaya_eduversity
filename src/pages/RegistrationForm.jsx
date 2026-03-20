@@ -24,7 +24,7 @@ const RegistrationForm = () => {
   useEffect(() => {
     const savedUsers = localStorage.getItem("users");
     if (savedUsers) {
-      setUsers(JSON.parse(savedUsers));
+      setUsers (JSON.parse(savedUsers));
     }
   }, []);
 

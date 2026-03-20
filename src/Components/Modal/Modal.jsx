@@ -6,6 +6,7 @@ import {
   DialogTitle,
 } from "@headlessui/react";
 
+
 export default function Modal() {
   const [open, setOpen] = useState(true);
 

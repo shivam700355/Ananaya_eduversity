@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Banner_4 from "../assets/companies/Banner_4.jpg";
-import Banner_5 from "../assets/companies/Banner_5.jpg"; // add second image
+import Banner_5 from "../assets/companies/Banner_5.jpg"; 
 
 export default function Banner() {
   const banners = [Banner_4, Banner_5];
@@ -9,7 +9,7 @@ export default function Banner() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % banners.length);
-    }, 3000); // change every 3 seconds
+    }, 3000); 
 
     return () => clearInterval(interval);
   }, []);
