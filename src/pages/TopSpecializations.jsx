@@ -13,14 +13,13 @@ import {
 export default function TopSpecializations() {
   const [data, setData] = useState([]);
 
-  // API CALL + FILTER "GENERAL"
+  // API CALL + REMOVE "GENERAL"
   useEffect(() => {
     fetch("https://eduversityedutech.com/api/specializations")
       .then((res) => res.json())
       .then((result) => {
         const finalData = result.data || result;
 
-        // REMOVE "GENERAL"
         const filteredData = finalData.filter((item) => {
           const name = item.name?.toLowerCase() || "";
           return !name.includes("general");
@@ -31,7 +30,7 @@ export default function TopSpecializations() {
       .catch((err) => console.error("API Error:", err));
   }, []);
 
-  // SPLIT INTO 4 PARTS
+  // SPLIT INTO 4 COLUMNS
   const part = Math.ceil(data.length / 4);
   const col1 = data.slice(0, part);
   const col2 = data.slice(part, part * 2);
@@ -44,27 +43,20 @@ export default function TopSpecializations() {
   const getIcon = (name = "") => {
     const lower = name.toLowerCase();
 
-    if (lower.includes("data"))
-      return <FaDatabase className={iconClass} />;
-    if (lower.includes("marketing"))
-      return <FaBullhorn className={iconClass} />;
-    if (lower.includes("finance"))
-      return <FaMoneyBillWave className={iconClass} />;
-    if (lower.includes("hr"))
-      return <FaUserTie className={iconClass} />;
-    if (lower.includes("health"))
-      return <FaHeartbeat className={iconClass} />;
-    if (lower.includes("it"))
-      return <FaLaptopCode className={iconClass} />;
+    if (lower.includes("data")) return <FaDatabase className={iconClass} />;
+    if (lower.includes("marketing")) return <FaBullhorn className={iconClass} />;
+    if (lower.includes("finance")) return <FaMoneyBillWave className={iconClass} />;
+    if (lower.includes("hr")) return <FaUserTie className={iconClass} />;
+    if (lower.includes("health")) return <FaHeartbeat className={iconClass} />;
+    if (lower.includes("it")) return <FaLaptopCode className={iconClass} />;
 
     return <FaChartLine className={iconClass} />;
   };
 
   return (
-    <div className="bg-gray-50 min-h-[10vh] flex items-center justify-center px-0 py-0">
-      {/* MAIN BOX */}
+    <div className="bg-gray-50 min-h-[10vh] flex items-center justify-center">
       <div className="w-full bg-white rounded-xl shadow-lg p-6 overflow-hidden">
-        
+
         {/* HEADING */}
         <div className="text-center mb-8">
           <h2 className="text-2xl md:text-3xl font-bold">
@@ -81,21 +73,23 @@ export default function TopSpecializations() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-h-[400px] md:max-h-[320px] overflow-hidden">
 
           {[col1, col2, col3, col4].map((column, colIndex) => (
-            <div
-              key={colIndex}
-              className="overflow-hidden group"
-            >
-              {/* SCROLL CONTAINER */}
+            <div key={colIndex} className="overflow-hidden group">
+
+              {/* SCROLL */}
               <div className="animate-scrollUp group-hover:[animation-play-state:paused] flex flex-col gap-4">
 
                 {column.map((item, index) => {
                   const name =
                     item.name || item.title || item.specialization;
 
+                  // 🔥 AUTO LINK USING ID
+                  const link = `https://eduversityedutech.com/courses?sp_id=${item.id}`;
+
                   return (
                     <div
                       key={index}
-                      className="flex justify-between items-center bg-gray-50 border rounded-lg px-4 py-3 hover:shadow-md transition"
+                      onClick={() => window.open(link, "_blank")}
+                      className="flex justify-between items-center bg-gray-50 border rounded-lg px-4 py-3 hover:shadow-md transition cursor-pointer"
                     >
                       <div className="flex items-center gap-3">
                         <div className="bg-red-100 p-2 rounded-lg text-lg">
