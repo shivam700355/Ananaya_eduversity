@@ -23,5 +23,13 @@
 }
 
 .animate-scrollUp {
-  animation: scrollUp 10s linear infinite;
+  animation: scrollUp 15s linear infinite;
+}  
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }

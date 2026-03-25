@@ -82,7 +82,7 @@ export default function TopSpecializations() {
                   const name =
                     item.name || item.title || item.specialization;
 
-                  // 🔥 AUTO LINK USING ID
+                  //  AUTO LINK USING ID
                   const link = `https://eduversityedutech.com/courses?sp_id=${item.id}`;
 
                   return (

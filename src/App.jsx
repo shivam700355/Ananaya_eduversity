@@ -7,6 +7,7 @@ import Counter from "./Components/Counter";
 import  {StringHookExample} from "./Components/StringHookExample";
 import Product from "./Components/Product";
 import TopSpecializations from "./pages/TopSpecializations";
+import UniversitiesCourses from "./pages/UniversitiesCourses";
 
 
 
@@ -39,7 +40,8 @@ function App() {
   {/* <Counter/> */}
   {/* <StringHookExample/> */}
   {/* <Product/> */}
-  <TopSpecializations/>
+  {/* <TopSpecializations/> */}
+  <UniversitiesCourses/>
   </div>
     );
   }
