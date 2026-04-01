@@ -8,7 +8,7 @@ import  {StringHookExample} from "./Components/StringHookExample";
 import Product from "./Components/Product";
 import TopSpecializations from "./pages/TopSpecializations";
 import UniversitiesCourses from "./pages/UniversitiesCourses";
-
+import Header from "./Components/Food/Header";
 
 
 
@@ -42,6 +42,7 @@ function App() {
   {/* <Product/> */}
   {/* <TopSpecializations/> */}
   <UniversitiesCourses/>
+  {/* <Header/> */}
   </div>
     );
   }
