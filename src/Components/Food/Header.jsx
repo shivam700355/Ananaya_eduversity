@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { Menu, X } from "lucide-react";
+import Logo from "./Logo.png";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Universities", href: "/universities" },
-    { name: "Courses", href: "/courses" },
-    { name: "About", href: "/about" },
+    { name: "About", href: "/universities" },
+    { name: "Menu", href: "/courses" },
+    { name: "Pages", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -16,53 +17,112 @@ export default function Header() {
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          
+
           {/* Logo */}
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold text-blue-600">
-              Eduversity
-            </h1>
+            <img
+              src={Logo}
+              alt="logo"
+              className="h-12 w-auto object-contain"
+            />
           </div>
 
-          {/* Desktop Menu */}
-          <nav className="hidden md:flex space-x-8">
-            {navLinks.map((link, index) => (
-              <a
-                key={index}
-                href={link.href}
-                className="text-gray-700 hover:text-blue-600 font-medium transition"
-              >
-                {link.name}
-              </a>
-            ))}
-          </nav>
+          {/* Right Section (Menu + Button) */}
+          <div className="flex items-center space-x-6">
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+            {/* Desktop Menu */}
+            <nav className="hidden md:flex space-x-8 font-['DM Sans'] text-[16px] font-medium">
+              {navLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.href}
+                  className="text-black hover:text-gray-600 transition"
+                >
+                  {link.name}
+                </a>
+              ))}
+            </nav>
+
+            {/* Right Side Button */}
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700"
+              className="
+                hidden md:block
+                font-['DM Sans']
+                text-[16px]
+                font-bold
+                leading-[24px]
+                tracking-[0px]
+                bg-white
+                text-black
+                border-2
+                border-black
+                px-6
+                py-2
+                rounded-full
+                hover:bg-black
+                hover:text-white
+                transition
+              "
             >
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
+              Book A Table
             </button>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-black"
+              >
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
+
           </div>
+
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden bg-white shadow-lg">
-          <div className="flex flex-col space-y-4 p-4">
+          <div className="flex flex-col space-y-4 p-4 font-['DM Sans'] text-[16px] font-medium">
+
             {navLinks.map((link, index) => (
               <a
                 key={index}
                 href={link.href}
-                className="text-gray-700 hover:text-blue-600 font-medium"
+                className="text-black hover:text-gray-600"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}
               </a>
             ))}
+
+            {/* Mobile Button */}
+            <button
+              className="
+              block md:hidden
+                font-['DM Sans']
+                text-[16px]
+                font-bold
+                leading-[24px]
+                tracking-[0px]
+                bg-white
+                text-black
+                border-2
+                border-black
+                px-6
+                py-2
+                rounded-full
+                hover:bg-black
+                hover:text-white
+                transition
+                
+              "
+            >
+              Book A Table
+            </button>
+
           </div>
         </div>
       )}
